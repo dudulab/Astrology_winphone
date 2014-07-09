@@ -1,0 +1,45 @@
+﻿<Application
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" xmlns:controlsPrimitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone.Controls" 
+    x:Class="Astrology.App"
+    >
+
+    <!--Application Resources-->
+    <Application.Resources>
+    	<ControlTemplate x:Key="PivotControlTemplate1" TargetType="controls:Pivot">
+    		<Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}" 
+    			VerticalAlignment="{TemplateBinding VerticalAlignment}">
+    			<Grid.RowDefinitions>
+    				<RowDefinition Height="Auto"/>
+    				<RowDefinition Height="Auto"/>
+    				<RowDefinition Height="*"/>
+    			</Grid.RowDefinitions>
+    			<Grid 
+    				Grid.RowSpan="3" 
+    				Background="{TemplateBinding Background}" 
+    				CacheMode="BitmapCache"/>
+    			<ContentPresenter
+    				Content="{TemplateBinding Title}"
+    				Margin="24,17,0,-7"
+    				ContentTemplate="{TemplateBinding TitleTemplate}"/>
+    			<controlsPrimitives:PivotHeadersControl
+    				Grid.Row="1"
+    				x:Name="HeadersListElement"/>
+    			<ItemsPresenter
+    				Grid.Row="2"
+    				Margin="{TemplateBinding Padding}"
+    				x:Name="PivotItemPresenter"/>
+    		</Grid>
+    	</ControlTemplate>
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService 
+            Launching="Application_Launching" Closing="Application_Closing" 
+            Activated="Application_Activated" Deactivated="Application_Deactivated"/>
+    </Application.ApplicationLifetimeObjects>
+
+</Application>
